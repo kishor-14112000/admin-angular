@@ -1,0 +1,131 @@
+.home-section .homes-contents {
+    padding-top: 70px;
+    margin-left: 5.5rem;
+    width: 91.5%;
+}
+
+/* .quiz-all{
+    margin-top: 4rem;
+    margin-left: 4rem;
+} */
+
+.above-table {
+    margin-right: 2rem;
+    margin-top: 1rem;
+    max-width: 100%;
+    
+}
+
+.input-group.rounded {
+    margin-left: 1rem;
+    height: 50%;
+    width: 30%;
+}
+
+.for-table {
+    margin-top: 2rem;
+}
+
+.box-shaw {
+    background: #0b2558;
+    border: none;
+}
+
+.box-shaw:hover {
+    background: #0b2558;
+    border: none;
+}
+
+.style_dot{
+    display: block; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 240px;
+    border-left: none;
+    border-right: none;
+}
+
+.style_dots{
+    display: block; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+    border-left: none;
+    border-right: none;
+}
+
+.dis-class{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 4rem;
+}
+
+.for-search-c{
+    margin-bottom: .2rem;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    width: 100%;
+}
+
+.font-weight{
+    font-weight: 500;
+}
+
+.for-add-btn{
+    float: left;
+    margin-bottom: 1rem;
+}
+
+.for-btn-r{
+    width: 100%;
+    display: flex;
+    flex-direction: unset;
+    padding: 1rem;
+    max-width: fit-content;
+}
+
+.for-r-inp{
+    width: 100%;
+    white-space: pre;
+}
+
+.for-div-drop{
+    width:30%;
+}
+
+.for-div-class{
+    display: flex;
+}
+
+.cursor-class{
+    cursor: pointer;
+}
+
+
+.color-class:hover{
+    background: #d4d1d1;
+    color: #000;
+}
+
+.hidden {
+    display: none;
+}
+
+.ques-ans-div{
+    margin-top: 0;
+}
+
+.radio-class{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+}
+
+.check-class{
+    display: grid;
+    grid-template-columns: auto auto;
+}

@@ -1,0 +1,115 @@
+.home-section .homes-contents {
+    padding-top: 70px;
+    margin-left: 5.5rem;
+    width: 91.5%;
+}
+
+.above-table {
+    margin-right: 2rem;
+    margin-top: 1rem;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-adj {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.for-table-adj {
+    overflow: auto;
+}
+
+.std-width{
+    min-width: 180px;
+}
+
+.std-width-one{
+    min-width: 40px;
+}
+
+.input-group.rounded{
+    margin-left: 8rem;
+    margin-right: 1.5rem;
+    height: 50%;
+    width: 60%;
+}
+
+.above-table-below{
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.box-shaw{
+    background: #0b2558;
+    border: none;
+}
+
+.box-shaw:hover{
+    background: #0b2558;
+    border: none;
+}
+
+.box-shaws:hover{
+    background: #c6c6c6;
+    border: none;
+}
+
+.for-hiding{
+    display: none;
+}
+
+.for-top-gap{
+    margin-top: 0.3rem;
+}
+
+.for-width-size{
+    min-width: 700px;
+}
+
+.style_dot{
+    display: block; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 180px;
+    border-left: none;
+    border-right: none;
+}
+
+.for-text-color{
+    color: #000;
+}
+
+.need-top{
+    margin-top: 1.5rem;
+}
+
+.cursor-class{
+    cursor: pointer;
+}
+
+.side-class{
+    margin-right: -3rem;
+}
+
+.action-icons{
+    /* margin-left: 10px; */
+    padding: 1rem;
+}
+
+.displayClass{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* .for-table-adj::-webkit-scrollbar {
+    display: none;
+} */
+
+.for-div-class{
+    margin-left: 10rem;
+    width: 50%;
+}

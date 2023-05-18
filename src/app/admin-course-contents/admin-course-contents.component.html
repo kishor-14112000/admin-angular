@@ -1,0 +1,276 @@
+<section class="home-section">
+    <div class="homes-contents">
+        <div class="mt-3">
+            <h4>Course Content</h4>
+        </div>
+        <div class="above-table mt-4">
+            <div>
+                <button class="btn btn-sm btn-primary box-shaw">Bulk Create</button>
+            </div>
+            <div class="d-flex">
+                <div class="input-group rounded">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                        aria-describedby="search-addon" [(ngModel)]="searchText" (keyup.enter)="search()" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <i class="fas fa-search" (click)="search()"></i>
+                    </span>
+                </div>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
+                    class="btn btn-sm btn-primary box-shaw"><i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+            </div>
+        </div>
+
+        <!-- TABLE STARTED -->
+        <div class="for-table-adj">
+            <table class="table table-bordered table-hover border-secondary table-adj">
+                <thead>
+                    <tr style="background-color:#cbc6c6;">
+                        <th scope="col" class="std-width-one">No.</th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Course Name &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Course Code &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Module Name &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Module No. &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Video Question &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Video Link &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer; text-align: center;">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="cursor: pointer;" *ngFor="let datass of AllData; let i = index">
+                        <th scope="row" style="width: 5%;">{{i+1}}</th>
+                        <td style="width: 15%;">{{ datass.course_name }}</td>
+                        <td>
+                            {{ datass.course_code }}
+                        </td>
+                        <td>
+                            {{ datass.module_name }}
+                        </td>
+                        <td>
+                            {{ datass.module_no }}
+                        </td>
+                        <td pTooltip="{{datass.video_question}}" tooltipPosition="top">
+                            <span class="style_dot">{{ datass.video_question }}</span>
+                        </td>
+                        <td pTooltip="{{datass.video_link}}" tooltipPosition="top">
+                            <span class="style_dot">{{ datass.video_link }}</span>
+                        </td>
+                        <td>
+                            <div class="action-icons" style="text-align: center;">
+                                <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2" (click)="openModal(i)"></i> &nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                <i class="fa-solid fa-trash" data-bs-toggle="modal" data-bs-target="#staticBackdrop3"
+                                    (click)="openDeleteModal(i)"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- FOR MODALS -->
+    <!-- course create modal -->
+    <form #f="ngForm" novalidate (ngSubmit)="f.form.valid">
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable for-width-size">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Course</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 d-flex" style="justify-content: space-between;">
+                            <div>
+                                <div>
+                                    <label for="exampleInputEmail1" class="form-label">Module Name</label> &nbsp;
+                                    &nbsp;
+                                    <br>
+                                    <button class="btn btn-light dropdown-toggle box-shaw" type="button"
+                                        data-bs-toggle="dropdown" (click)="just_clicked_course()" aria-expanded="false"
+                                        style="color: #fff;">
+                                        Select Module
+                                    </button>
+                                    <div>
+                                        <div [class]="myClass1" class="for-div-drop"
+                                            aria-labelledby="dropdownMenuButton">
+                                            <!-- <div class="for-search-c">
+                                                <input type="search" class="form-control rounded" placeholder="Search"
+                                                    aria-label="Search" aria-describedby="search-addon">
+                                            </div> -->
+                                            <div>
+                                                <div *ngFor="let cname of module_data; let i=index;"
+                                                    (click)="hide_click_course()"
+                                                    (click)="selectItem_course(cname.module_name)">
+                                                    <div [class]="hide_class_course" class="cursor-class color-class">
+                                                        {{cname.module_name}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5><span class="badge" style="color: #000; background: #e2dfdf;">
+                                            {{selectedItems_course}}</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating">
+                            <textarea class="form-control" id="floatingTextarea2" rows="2" [(ngModel)]="video_question"
+                                [ngModelOptions]="{standalone:true}"></textarea>
+                            <label for="floatingTextarea2">Video Question</label>
+                        </div>
+
+                        <div class="row g-3 for-top-gap">
+                            <div class="col">
+                                <label for="formGroupExampleInput" class="form-label">Video Link</label>
+                                <input type="text" class="form-control" placeholder="paste the video link here"
+                                    aria-label="Link" [(ngModel)]="video_link" [ngModelOptions]="{standalone:true}">
+                            </div>
+                            <div class="col" style="margin-left: 2rem;">
+                                <label for="formGroupExampleInput" class="form-label">Caption</label><br>
+                                <button type="upload" class="btn btn-sm btn-primary box-shaw">Upload Transcript</button>
+                                <p style="color:red; font-size: .8rem;">*Only .txt format</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" data-bs-target="#exampleModalToggle2" (click)="submit=true"
+                            class="btn btn-sm btn-primary box-shaw" (click)="onSubmit()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- course update modal -->
+    <form>
+        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" style="min-width: 600px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">UPDATE</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <tbody>
+                                <tr class="displayClass">
+                                    <td>
+                                        <span><b>Course name</b></span>
+                                        <input type="text" class="form-control" *ngIf="selectedValue"
+                                            [(ngModel)]="selectedValue.course_name"
+                                            [ngModelOptions]="{standalone: true}" disabled>
+                                    </td>
+                                    <td class="mt-3">
+                                        <span><b>Course Code</b></span>
+                                        <input type="text" class="form-control" *ngIf="selectedValue"
+                                            [(ngModel)]="selectedValue.course_code"
+                                            [ngModelOptions]="{standalone: true}" disabled>
+                                    </td>
+                                    <td class="mt-3">
+                                        <span><b>Video Question</b></span>
+                                        <textarea class="form-control" rows="2" *ngIf="selectedValue"
+                                            [(ngModel)]="selectedValue.video_question"
+                                            [ngModelOptions]="{standalone: true}"></textarea>
+                                    </td>
+                                    <td class="mt-3">
+                                        <span><b>Video Link</b></span>
+                                        <textarea class="form-control" rows="1" *ngIf="selectedValue"
+                                            [(ngModel)]="selectedValue.video_link"
+                                            [ngModelOptions]="{standalone: true}"></textarea>
+                                    </td>
+                                    <td class="mt-3">
+                                        <span><b>Module Name</b></span>
+                                        <input type="text" class="form-control" *ngIf="selectedValue"
+                                            [(ngModel)]="selectedValue.module_name"
+                                            [ngModelOptions]="{standalone: true}" disabled>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-sm btn-primary box-shaw"
+                            (click)="onSaveChanges()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- course delete modal -->
+
+    <form>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Are you sure want to delete this!</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Course Name</th>
+                                    <th scope="col">Course Code</th>
+                                    <th scope="col">Video Question</th>
+                                    <th scope="col">Video Link</th>
+                                    <th scope="col">Module No.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" class="form-control" *ngIf="DeletedValue"
+                                            [(ngModel)]="DeletedValue.course_name" [ngModelOptions]="{standalone: true}"
+                                            readonly></td>
+                                    <td><input type="text" class="form-control" *ngIf="DeletedValue"
+                                            [(ngModel)]="DeletedValue.course_code" [ngModelOptions]="{standalone: true}"
+                                            readonly></td>
+                                    <td><input type="text" class="form-control" rows="4" *ngIf="DeletedValue"
+                                            [(ngModel)]="DeletedValue.video_question"
+                                            [ngModelOptions]="{standalone: true}" readonly></td>
+                                    <td><input type="text" class="form-control" rows="4" *ngIf="DeletedValue"
+                                            [(ngModel)]="DeletedValue.video_link" [ngModelOptions]="{standalone: true}"
+                                            readonly></td>
+                                    <td><input type="text" class="form-control" *ngIf="DeletedValue"
+                                            [(ngModel)]="DeletedValue.module_no" [ngModelOptions]="{standalone: true}"
+                                            readonly></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-primary" (click)="onDeleteChanges()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</section>

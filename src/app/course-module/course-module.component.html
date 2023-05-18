@@ -1,0 +1,248 @@
+<section class="home-section">
+    <div class="homes-contents">
+        <div class="mt-3">
+            <h4>Course Module</h4>
+        </div>
+        <div class="above-table mt-4">
+            <div>
+                <button class="btn btn-sm btn-primary box-shaw">Bulk Create</button>
+            </div>
+            <div class="d-flex">
+                <div class="input-group rounded">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                        aria-describedby="search-addon" [(ngModel)]="searchText" (keyup.enter)="search()" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <i class="fas fa-search" (click)="search()"></i>
+                    </span>
+                </div>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
+                    class="btn btn-sm btn-primary box-shaw"><i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+            </div>
+        </div>
+
+        <div class="for-table-adj">
+            <table class="table table-bordered table-hover border-secondary table-adj">
+                <thead>
+                    <tr style="background-color:#cbc6c6;">
+                        <th scope="col" class="std-width-one">No.</th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Course Name &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Course Code &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Module Name &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Module No &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            No. of Quiz &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer;">
+                            Level &nbsp;
+                        </th>
+                        <th scope="col" class="std-width" style="cursor: pointer; text-align: center;">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="cursor: pointer;" *ngFor="let moduledata of module_data; let i=index;">
+                        <th scope="row" style="width: 5%;">{{i+1}}</th>
+                        <td style="width: 15%;">
+                            {{moduledata.course_name}}
+                        </td>
+                        <td>
+                            {{moduledata.course_code}}
+                        </td>
+                        <td>
+                            {{moduledata.module_name}}
+                        </td>
+                        <td>
+                            {{moduledata.module_no}}
+                        </td>
+                        <td>
+                            {{moduledata.course_name}}
+                        </td>
+                        <td>
+                            {{moduledata.level}}
+                        </td>
+                        <td>
+                            <div class="action-icons" style="text-align: center;">
+                                <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2" (click)="openModal(i)">
+                                </i> &nbsp;&nbsp;&nbsp;&nbsp;
+                                <i class="fa-solid fa-trash" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop3">
+                                </i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- MODALS -->
+
+    <form (submit)="onSubmit()" #f="ngForm" novalidate (ngSubmit)="f.form.valid">
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable for-width-size">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">New Module</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-between margin-class">
+                            <div class="mb-3 d-flex" style="justify-content: space-between;">
+                                <div>
+                                    <div>
+                                        <label for="exampleInputEmail1" class="form-label">Course Name:</label> &nbsp;
+                                        &nbsp;
+                                        <br>
+                                        <button class="btn btn-light dropdown-toggle box-shaw" type="button"
+                                            data-bs-toggle="dropdown" (click)="just_clicked_course()"
+                                            aria-expanded="false" style="color: #fff;">
+                                            Select Course Name
+                                        </button>
+                                        <div>
+                                            <div [class]="myClass1" class="for-div-drop"
+                                                aria-labelledby="dropdownMenuButton">
+                                                <div class="for-search-c">
+                                                    <input type="search" class="form-control rounded"
+                                                        placeholder="Search" aria-label="Search"
+                                                        aria-describedby="search-addon">
+                                                </div>
+                                                <div>
+                                                    <div *ngFor="let cname of course_Data; let i=index;"
+                                                        (click)="hide_click_course()"
+                                                        (click)="selectItem_course(cname.course_name)">
+                                                        <div [class]="hide_class_course"
+                                                            class="cursor-class color-class">
+                                                            {{cname.course_name}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5><span class="badge" style="color: #000; background: #e2dfdf;">
+                                                {{selectedItems_course}}</span></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 d-flex" style="justify-content: space-between;">
+                                <div>
+                                    <div>
+                                        <label for="exampleInputEmail1" class="form-label">Level</label> &nbsp;
+                                        &nbsp;
+                                        <br>
+                                        <button class="btn btn-light dropdown-toggle box-shaw" type="button"
+                                            data-bs-toggle="dropdown" (click)="just_clicked()" aria-expanded="false"
+                                            style="color: #fff;">
+                                            Select Level
+                                        </button>
+                                        <div>
+                                            <div [class]="myClass" class="for-div-drop"
+                                                aria-labelledby="dropdownMenuButton">
+                                                
+                                                <div>
+                                                    <div (click)="hide_click()">
+                                                        <div>
+                                                            <div [class]="hide_class" class="cursor-class color-class">
+                                                              <li (click)="selectedItem = 'Easy'">Easy</li>
+                                                            </div>
+                                                            <div [class]="hide_class" class="cursor-class color-class">
+                                                              <li (click)="selectedItem = 'Intermediate'">Intermediate</li>
+                                                            </div>
+                                                            <div [class]="hide_class" class="cursor-class color-class">
+                                                              <li (click)="selectedItem = 'Hard'">Hard</li>
+                                                            </div>
+                                                        </div>                
+                                                    </div>
+                                                  </div>
+                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5><span class="badge" style="color: #000; background: #e2dfdf;">
+                                            {{selectedItem}}</span></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col">
+                                <label for="formGroupExampleInput" class="form-label">Module Name</label>
+                                <input type="text" class="form-control" placeholder="Enter a Module Name"
+                                    aria-label="Module No" [(ngModel)]="module_name"
+                                    [ngModelOptions]="{standalone:true}">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" data-bs-target="#exampleModalToggle2" (click)="submit=true"
+                            class="btn btn-sm btn-primary box-shaw">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- ------------ -->
+
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Module</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tbody>
+                            <tr class="displayClass">
+                                <td>
+                                    <span>Course name</span>
+                                    <input type="text" class="form-control" *ngIf="selectedValue"
+                                        [(ngModel)]="selectedValue.course_name"
+                                        [ngModelOptions]="{standalone: true}" disabled>
+                                </td>
+                                <td>
+                                    <span>Course Code</span>
+                                    <input type="text" class="form-control" *ngIf="selectedValue"
+                                        [(ngModel)]="selectedValue.course_code"
+                                        [ngModelOptions]="{standalone: true}" disabled>
+                                </td>
+                                <td>
+                                    <span>Module Name</span>
+                                    <input type="text" class="form-control" *ngIf="selectedValue"
+                                        [(ngModel)]="selectedValue.module_name"
+                                        [ngModelOptions]="{standalone: true}">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary box-shaw btn-sm" (click)="onSaveChanges()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
