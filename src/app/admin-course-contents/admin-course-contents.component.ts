@@ -1,6 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AdminCourseServiceService } from '../service/admin-course-service.service';
+import AWSS3UploadAshClient from 'aws-s3-upload-ash';
+import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
 
 @Component({
   selector: 'app-admin-course-contents',
@@ -21,7 +23,6 @@ export class AdminCourseComponent implements OnInit {
   course_code: string = '';
   module_no: string = '';
   video_link: string = '';
-  
   submit = false;
   http: any;
   renderer: any;
@@ -37,8 +38,16 @@ export class AdminCourseComponent implements OnInit {
   module_data: any[] = [];
   filteredData: any[] = [];
   searchText: string = '';
+  fileSelected: any = null;
+  selectedFile!: File;
 
   // end of initialization variables.
+
+  // config = {
+  //   bucketName: 'iamneo-intern',
+  //   region: 'us-east-1',
+  //   accessKeyId: 
+  // }
 
   constructor(private service: AdminCourseServiceService) {}
 
@@ -93,6 +102,10 @@ export class AdminCourseComponent implements OnInit {
 
   //post data details
 
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
   onSubmit() {
     const courseData = {
       module_name: this.selectedItems_course,
@@ -100,7 +113,10 @@ export class AdminCourseComponent implements OnInit {
       video_link: this.video_link,
     };
 
-    this.service.addCourseContent(courseData).subscribe((response) => {
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
+
+    this.service.addCourseContent(courseData,formData).subscribe((response) => {
       console.log(response);
     });
   }

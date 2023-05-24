@@ -26,35 +26,35 @@
         <div class="for-table-adj">
             <table class="table table-bordered table-hover border-secondary table-adj">
                 <thead>
-                    <tr style="background-color:#cbc6c6;">
+                    <tr class="bg-color">
                         <th scope="col" class="std-width-one">No.</th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class" >
                             Course Name &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Course Code &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Module Name &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Module No. &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Video Question &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Video Link &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer; text-align: center;">
+                        <th scope="col" class="std-width txt-center">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="cursor: pointer;" *ngFor="let datass of AllData; let i = index">
-                        <th scope="row" style="width: 5%;">{{i+1}}</th>
-                        <td style="width: 15%;">{{ datass.course_name }}</td>
+                    <tr class="cursor-class" *ngFor="let datass of AllData; let i = index">
+                        <th scope="row" class="size-5">{{i+1}}</th>
+                        <td class="size-15">{{ datass.course_name }}</td>
                         <td>
                             {{ datass.course_code }}
                         </td>
@@ -98,7 +98,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="mb-3 d-flex" style="justify-content: space-between;">
+                        <div class="mb-3 d-flex just-space">
                             <div>
                                 <div>
                                     <label for="exampleInputEmail1" class="form-label">Module Name</label> &nbsp;
@@ -128,7 +128,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h5><span class="badge" style="color: #000; background: #e2dfdf;">
+                                    <h5><span class="badge color-class">
                                             {{selectedItems_course}}</span></h5>
                                 </div>
                             </div>
@@ -141,14 +141,15 @@
 
                         <div class="row g-3 for-top-gap">
                             <div class="col">
-                                <label for="formGroupExampleInput" class="form-label">Video Link</label>
-                                <input type="text" class="form-control" placeholder="paste the video link here"
-                                    aria-label="Link" [(ngModel)]="video_link" [ngModelOptions]="{standalone:true}">
+                                <label for="formGroupExampleInput" class="form-label">Upload Video</label><br>
+                                <!-- <input type="text" class="form-control" placeholder="paste the video link here"
+                                    aria-label="Link" [(ngModel)]="video_link" [ngModelOptions]="{standalone:true}"> -->
+                                <input type="file" accept="video/*">
                             </div>
-                            <div class="col" style="margin-left: 2rem;">
-                                <label for="formGroupExampleInput" class="form-label">Caption</label><br>
-                                <button type="upload" class="btn btn-sm btn-primary box-shaw">Upload Transcript</button>
-                                <p style="color:red; font-size: .8rem;">*Only .txt format</p>
+                            <div class="col">
+                                <label for="formGroupExampleInput" class="form-label">Caption:</label><br>
+                                <input type="file" accept=".txt" (change)="onFileSelected($event)">
+                                <p class="note-class">*Only .txt format</p>
                             </div>
                         </div>
                     </div>
@@ -166,7 +167,7 @@
     <form>
         <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel2" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" style="min-width: 600px;">
+            <div class="modal-dialog modal-dialog-scrollable modal-width">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">UPDATE</h1>

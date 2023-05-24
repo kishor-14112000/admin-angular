@@ -88,6 +88,33 @@
     flex-direction: column;
 }
 
+.cursor-class{
+    cursor: pointer;
+}
+
+.text-align{
+    text-align: center;
+}
+
+.size-5{
+    width: 5%;
+}
+
+.size-15{
+    width: 15%;
+}
+
+.note-font{
+    font-size: 12.5px;
+}
+
+.jus-spa{
+    justify-content: space-between;
+}
+
+.bg-color{
+    background-color: #cbc6c6;
+}
 
 /* .for-table-adj::-webkit-scrollbar {
     display: none;

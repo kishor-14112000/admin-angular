@@ -16,8 +16,8 @@ export class AdminCourseServiceService {
     return this.http.delete('/api/DeleteData', options);
   }
 
-  addCourseContent(courseContentData: any) {
-    return this.http.post('/api/courseContentData', courseContentData);
+  addCourseContent(courseContentData: any, formdata:any) {
+    return this.http.post('/api/courseContentData', courseContentData, formdata);
   }
 
   addModule(ModuleData: any) {

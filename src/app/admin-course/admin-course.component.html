@@ -22,32 +22,32 @@
         <div class="for-table-adj">
             <table class="table table-bordered table-hover border-secondary table-adj">
                 <thead>
-                    <tr style="background-color:#cbc6c6;">
+                    <tr class="bg-color">
                         <th scope="col" class="std-width-one">No.</th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Course Name &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Course Code &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             No. of Module's &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             No. of Quizes &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             No. of Students &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer; text-align: center;">
+                        <th scope="col" class="std-width cursor-class text-align">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="cursor: pointer;" *ngFor="let datass of filteredData; let i = index">
-                        <th scope="row" style="width: 5%;">{{i+1}}</th>
-                        <td style="width: 15%;">{{ datass.course_name }}</td>
+                    <tr class="cursor-class" *ngFor="let datass of filteredData; let i = index">
+                        <th scope="row" class="size-5">{{i+1}}</th>
+                        <td class="size-15">{{ datass.course_name }}</td>
                         <td>
                             {{ datass.course_code }}
                         </td>
@@ -61,7 +61,7 @@
                             256
                         </td>
                         <td>
-                            <div class="action-icons" style="text-align: center;">
+                            <div class="action-icons text-align">
                                 <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop2" (click)="openModal(i)"></i> &nbsp;
                                 &nbsp;&nbsp;&nbsp;
@@ -87,12 +87,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="mb-3 d-flex" style="justify-content: space-between;">
+                        <div class="mb-3 d-flex jus-spa">
                             <div><label for="formGroupExampleInput" class="form-label">Course Name</label>
                                 <input type="text" class="form-control" name="courseName" id="formGroupExampleInput"
                                     placeholder="Enter a Course Name" [(ngModel)]="new_course_name"
                                     #newcourseName="ngModel" [ngModelOptions]="{standalone:true}" required />
-                                <span class="text-danger" style="font-size: 12.5px;"
+                                <span class="text-danger note-font"
                                     *ngIf="this.submit&&newcourseName.errors?.['required']">
                                     *course name is required
                                 </span>
@@ -102,7 +102,7 @@
                                 <input type="text" class="form-control" name="courseCode" id="formGroupExampleInput"
                                     placeholder="Enter a Course Code" [(ngModel)]="new_course_code"
                                     #newcourseCode="ngModel" [ngModelOptions]="{standalone:true}" required />
-                                <span class="text-danger" style="font-size: 12.5px;"
+                                <span class="text-danger note-font"
                                     *ngIf="this.submit&&newcourseCode.errors?.['required']">
                                     *course code is required
                                 </span>

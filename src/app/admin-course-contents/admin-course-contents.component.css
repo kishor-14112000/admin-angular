@@ -95,7 +95,6 @@
 }
 
 .action-icons{
-    /* margin-left: 10px; */
     padding: 1rem;
 }
 
@@ -112,4 +111,38 @@
 .for-div-class{
     margin-left: 10rem;
     width: 50%;
+}
+
+.bg-color{
+    background-color: #cbc6c6;
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.size-5{
+    width: 5%;
+}
+
+.size-15{
+    width: 15%;
+}
+
+.just-space{
+    justify-content: space-between;
+}
+
+.color-class{
+    color: #000;
+    background: #e2dfdf;
+}
+
+.note-class{
+    color: red;
+    font-size: .9rem;
+}
+
+.modal-width{
+    width: 600px;
 }

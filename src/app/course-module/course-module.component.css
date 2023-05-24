@@ -122,3 +122,24 @@
     margin-left: 10rem;
     width: 50%;
 }
+
+.bg-color{
+    background-color: #cbc6c6;
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.size-5{
+    width: 5%;
+}
+
+.size-15{
+    width: 15%;
+}
+
+.color-class{
+    color: #000;
+    background: #e2dfdf;
+}

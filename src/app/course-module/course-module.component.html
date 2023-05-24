@@ -25,35 +25,35 @@
         <div class="for-table-adj">
             <table class="table table-bordered table-hover border-secondary table-adj">
                 <thead>
-                    <tr style="background-color:#cbc6c6;">
+                    <tr class="bg-color">
                         <th scope="col" class="std-width-one">No.</th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Course Name &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Course Code &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Module Name &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Module No &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             No. of Quiz &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer;">
+                        <th scope="col" class="std-width cursor-class">
                             Level &nbsp;
                         </th>
-                        <th scope="col" class="std-width" style="cursor: pointer; text-align: center;">
+                        <th scope="col" class="std-width cursor-class txt-center">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="cursor: pointer;" *ngFor="let moduledata of module_data; let i=index;">
-                        <th scope="row" style="width: 5%;">{{i+1}}</th>
-                        <td style="width: 15%;">
+                    <tr class="cursor-class" *ngFor="let moduledata of module_data; let i=index;">
+                        <th scope="row" class="size-5">{{i+1}}</th>
+                        <td class="size-15">
                             {{moduledata.course_name}}
                         </td>
                         <td>
@@ -72,7 +72,7 @@
                             {{moduledata.level}}
                         </td>
                         <td>
-                            <div class="action-icons" style="text-align: center;">
+                            <div class="action-icons txt-center">
                                 <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop2" (click)="openModal(i)">
                                 </i> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -133,7 +133,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h5><span class="badge" style="color: #000; background: #e2dfdf;">
+                                        <h5><span class="badge color-class">
                                                 {{selectedItems_course}}</span></h5>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h5><span class="badge" style="color: #000; background: #e2dfdf;">
+                                        <h5><span class="badge color-class">
                                             {{selectedItem}}</span></h5>
                                     </div>
                                 </div>
