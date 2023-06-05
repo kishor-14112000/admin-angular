@@ -42,6 +42,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { CourseModuleComponent } from './course-module/course-module.component';
 import { TabViewModule } from 'primeng/tabview';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { TabViewModule } from 'primeng/tabview';
     CheckboxModule,
     RadioButtonModule,
     TabViewModule,
+    TabMenuModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

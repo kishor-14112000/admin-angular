@@ -36,9 +36,9 @@
                         <th scope="col" class="std-width cursor-class">
                             Module Name &nbsp;
                         </th>
-                        <th scope="col" class="std-width cursor-class">
+                        <!-- <th scope="col" class="std-width cursor-class">
                             Module No &nbsp;
-                        </th>
+                        </th> -->
                         <th scope="col" class="std-width cursor-class">
                             No. of Quiz &nbsp;
                         </th>
@@ -51,7 +51,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="cursor-class" *ngFor="let moduledata of module_data; let i=index;">
+                    <tr class="cursor-class" *ngFor="let moduledata of module_data; let i=index;"
+                        (click)="redirectToContent(moduledata.module_no)">
                         <th scope="row" class="size-5">{{i+1}}</th>
                         <td class="size-15">
                             {{moduledata.course_name}}
@@ -62,9 +63,9 @@
                         <td>
                             {{moduledata.module_name}}
                         </td>
-                        <td>
+                        <!-- <td>
                             {{moduledata.module_no}}
-                        </td>
+                        </td> -->
                         <td>
                             {{moduledata.course_name}}
                         </td>
@@ -73,11 +74,10 @@
                         </td>
                         <td>
                             <div class="action-icons txt-center">
-                                <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop2" (click)="openModal(i)">
+                                <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
+                                    (click)="openModal(i)">
                                 </i> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <i class="fa-solid fa-trash" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop3">
+                                <i class="fa-solid fa-trash" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
                                 </i>
                             </div>
                         </td>

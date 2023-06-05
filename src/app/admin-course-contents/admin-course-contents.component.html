@@ -52,7 +52,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="cursor-class" *ngFor="let datass of AllData; let i = index">
+                    <tr class="cursor-class" *ngFor="let datass of AllData; let i = index" 
+                        (click)="redirectToQuiz(datass.content_id)">
                         <th scope="row" class="size-5">{{i+1}}</th>
                         <td class="size-15">{{ datass.course_name }}</td>
                         <td>

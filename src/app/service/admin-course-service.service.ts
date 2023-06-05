@@ -64,6 +64,18 @@ export class AdminCourseServiceService {
     return this.http.get('/api/quizAnswers');
   }
 
+  sendCid(couID:any){
+    return this.http.get(`/api/sendCourseId/${couID}`);
+  }
+
+  sendMno(ModNo:any){
+    return this.http.get(`/api/sendModuleNo/${ModNo}`);
+  }
+
+  sendContId(conNo:any){
+    return this.http.get(`/api/sendContentNo/${conNo}`);
+  }
+
   get_quizAnswersAdmin(){
     return this.http.get('/api/quizAnswersAdmin');
   }

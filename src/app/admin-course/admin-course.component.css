@@ -2,6 +2,7 @@
     padding-top: 70px;
     margin-left: 5.5rem;
     width: 91.5%;
+    font-family: 'Poppins', sans-serif;
 }
 
 .above-table {
@@ -11,6 +12,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+.underline{
+    text-decoration: none;
+}
+
 
 .table-adj {
     margin-top: 1rem;
@@ -46,6 +52,27 @@
     border: none;
 }
 
+.for-float{
+    float: left;
+}
+
+::ng-deep.p-tabview .p-tabview-nav{
+    display: flex;
+    justify-content: space-around;
+}
+
+::ng-deep.p-tabmenu-nav .p-menuitem-text{
+    color: #0b2558;
+}
+
+::ng-deep.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link .p-menuitem-icon{
+    color: #0b2558;
+}
+
+::ng-deep.p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link{
+    border-top: #000;
+}
+
 .box-shaw:hover{
     background: #0b2558;
     border: none;
@@ -76,6 +103,10 @@
     width: 180px;
     border-left: none;
     border-right: none;
+}
+
+.for-font{
+    font-size: 1.1rem;
 }
 
 .action-icons{

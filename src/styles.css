@@ -1,6 +1,6 @@
 html,
-body {
-    background-color: #f7f7fc;
+body, h1,h2,h3,h4,h5,h6,span,p,strong,b,button,i,td,tr,th,label,input, textarea {
+    /* background-color: #f7f7fc; */
     font-family: "Poppins", sans-serif;
 }
 
@@ -18,12 +18,10 @@ body {
 @import '~primeicons/primeicons.css';
 
 .small-start span.p-rating-icon.pi {
-    font-size: 12px;
     letter-spacing: 1px !important;
 }
 
 .small-starts span.p-rating-icon.pi {
-    font-size: 14px;
     letter-spacing: 1px !important;
 }
 

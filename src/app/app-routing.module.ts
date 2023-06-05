@@ -5,20 +5,23 @@ import { AdminCourseComponent } from './admin-course-contents/admin-course-conte
 import { QuizComponent } from './quiz/quiz.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { CourseModuleComponent } from './course-module/course-module.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 
-  {path: 'course-content', component: AdminCourseComponent},
+  {path: 'course-content/:module_no', component: AdminCourseComponent},
   
-  {path: '', component: AdminCourseComponent},
+  {path: '', component: AdminCourseContentComponent},
   
   {path: 'sidebar', component: SidenavComponent},
 
   {path: 'admin-course', component: AdminCourseContentComponent},
 
-  {path: 'quiz', component: QuizComponent},
+  {path: 'quiz/:content_id', component: QuizComponent},
 
-  {path: 'course-module', component: CourseModuleComponent}
+  {path: 'course-module/:course_id', component: CourseModuleComponent},
+  
+  {path: 'login', component: LoginComponent}
 
 ];
 

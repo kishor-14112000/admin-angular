@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AdminCourseServiceService } from '../service/admin-course-service.service';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -47,6 +48,8 @@ export class QuizComponent {
   correctAnswers: any[] = [];
   selectedValue: any;
   i: number = 0;
+  contentNo:any;
+
   radioOptions: {
     label: string;
     checked: boolean;
@@ -121,12 +124,17 @@ export class QuizComponent {
 
   constructor(
     private service: AdminCourseServiceService,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.get_quizAns_FromAPI();
-    this.get_content_data();
+    this.route.params.subscribe(params => {
+      this.contentNo = +params['content_id'];
+      this.get_quizAns_FromAPI();
+      this.get_content_data();
+    });
+    
     this.selectedOption = 'Select answer type';
   }
 
@@ -281,7 +289,7 @@ export class QuizComponent {
   }
 
   get_quizAns_FromAPI() {
-    this.service.get_quizAnswersAdmin().subscribe(
+    this.service.sendContId(this.contentNo).subscribe(
       (response: any) => {
         this.quiz_answer = response.data;
         console.log(this.quiz_answer, 'Answer datas');

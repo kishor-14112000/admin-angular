@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminCourseServiceService } from '../service/admin-course-service.service';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-admin-course',
@@ -17,6 +18,9 @@ export class AdminCourseContentComponent implements OnInit {
   all_data: any[] = [];
   count_Data: any[] = [];
   selectedValue: any;
+  items!: MenuItem[];
+  activeItem!: MenuItem;
+  activeItemIndex = 0;
 
   constructor(private service: AdminCourseServiceService) {
     this.count_Data = [];
@@ -28,10 +32,16 @@ export class AdminCourseContentComponent implements OnInit {
   }
 
   onSubmit_Course() {
+    if (!this.new_course_name || !this.new_course_code) {
+      // Display error message or perform desired action for empty input
+      return;
+    }
+  
     const course_create = {
       course_name: this.new_course_name,
       course_code: this.new_course_code,
     };
+  
     this.service.addNewCourse(course_create).subscribe((response) => {
       console.log(response, 'creating new course');
     });
@@ -83,6 +93,14 @@ export class AdminCourseContentComponent implements OnInit {
   openModal(i: any) {
     this.selectedValue = this.course_Data[i];
   }
+
+  
+  redirectToCourseModule(courseId: number) {
+    this.service.sendCid(courseId).subscribe((response:any)=>{
+      window.location.href = `/course-module/${courseId}`;
+    })
+  }
+  
 
   //update
   onSaveChanges(): void {

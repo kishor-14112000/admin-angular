@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AdminCourseServiceService } from '../service/admin-course-service.service';
+import { ActivatedRoute } from '@angular/router';
 import AWSS3UploadAshClient from 'aws-s3-upload-ash';
 import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
 
@@ -40,6 +41,7 @@ export class AdminCourseComponent implements OnInit {
   searchText: string = '';
   fileSelected: any = null;
   selectedFile!: File;
+  moduleNo:any;
 
   // end of initialization variables.
 
@@ -49,11 +51,14 @@ export class AdminCourseComponent implements OnInit {
   //   accessKeyId: 
   // }
 
-  constructor(private service: AdminCourseServiceService) {}
+  constructor(private service: AdminCourseServiceService,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.getDataFromAPI();
-    this.getModuleDataFromAPI();
+    this.route.params.subscribe(params => {
+      this.moduleNo = +params['module_no'];
+      this.getDataFromAPI();
+      this.getModuleDataFromAPI();
+    });
   }
 
   just_clicked() {
@@ -124,7 +129,7 @@ export class AdminCourseComponent implements OnInit {
   //get data from api (backend)
 
   getDataFromAPI() {
-    this.service.getContentData().subscribe(
+    this.service.sendMno(this.moduleNo).subscribe(
       (response: any) => {
         this.AllData = response.data;
         this.filteredData = this.AllData;
@@ -202,6 +207,12 @@ export class AdminCourseComponent implements OnInit {
     } else {
       this.checks = false;
     }
+  }
+
+  redirectToQuiz(cont_id:any){
+    this.service.sendContId(cont_id).subscribe((response:any)=>{
+      window.location.href = `/quiz/${cont_id}`;
+    })
   }
 
   //search...

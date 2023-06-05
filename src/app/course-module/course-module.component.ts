@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminCourseServiceService } from '../service/admin-course-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 interface City {
   name: string;
@@ -26,19 +27,18 @@ export class CourseModuleComponent implements OnInit {
   selectedValue: any;
   cities!: City[];
   selectedCity!: City;
+  courseId:any;
+  moduleNo:any;
 
-  constructor(private service: AdminCourseServiceService) {}
+  constructor(private service: AdminCourseServiceService,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.getDataFromAPI();
-    this.getCourseDataFromAPI();
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
-  ];
+    this.route.params.subscribe(params => {
+      this.courseId = +params['course_id'];
+      this.moduleNo = +params['module_no'];
+      this.getDataFromAPI();
+      this.getCourseDataFromAPI();
+    });
   }
 
   just_clicked_course() {
@@ -98,7 +98,7 @@ export class CourseModuleComponent implements OnInit {
   }
 
   getDataFromAPI() {
-    this.service.getModuleData().subscribe(
+    this.service.sendCid(this.courseId).subscribe(
       (response: any) => {
         this.module_data = response.data;
         this.filterData();
@@ -121,6 +121,12 @@ export class CourseModuleComponent implements OnInit {
         console.log('Error is:', error);
       }
     );
+  }
+
+  redirectToContent(mod_no:any){
+    this.service.sendMno(mod_no).subscribe((response:any)=>{
+      window.location.href = `/course-content/${mod_no}`;
+    })
   }
 
   filterData() {
